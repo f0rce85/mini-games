@@ -1,9 +1,19 @@
-function App() {
+import { useState } from 'react';
+import { Board } from './components/Board';
+import type { Board as BoardType } from './types/types';
+
+const createEmptyBoard = (): BoardType =>
+  Array(8)
+    .fill(null)
+    .map(() => Array(8).fill(null));
+
+export default function App() {
+  const [board] = useState<BoardType>(createEmptyBoard());
+
   return (
-    <div style={{ padding: '2rem' }}>
-      <h1>React + TypeScript + Vite</h1>
+    <div>
+      <h1>Chess</h1>
+      <Board board={board} />
     </div>
   );
 }
-
-export default App;
